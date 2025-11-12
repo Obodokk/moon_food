@@ -1,0 +1,182 @@
+/* ===== АНИМАЦИИ И АНИМАЦИОННЫЕ ЭФФЕКТЫ ===== */
+
+/* Полоса загрузки */
+.loading-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-green), var(--hacker-blue));
+    z-index: 9999;
+    animation: loading 2s ease-in-out;
+}
+
+@keyframes loading {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
+}
+
+/* Glitch эффекты */
+.glitch-text {
+    position: relative;
+    animation: glitch 3s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    animation: glitch-1 0.5s infinite;
+    color: var(--rug-red);
+    z-index: -1;
+}
+
+.glitch-text::after {
+    animation: glitch-2 0.5s infinite;
+    color: var(--hacker-blue);
+    z-index: -2;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+    0%, 100% { transform: translate(0); opacity: 1; }
+    50% { transform: translate(-2px, -1px); opacity: 0.75; }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { transform: translate(0); opacity: 1; }
+    50% { transform: translate(2px, 1px); opacity: 0.75; }
+}
+
+/* Анимация появления элементов */
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Анимация логотипа */
+.logo {
+    animation: logoFloat 6s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+/* Анимация кнопок категорий */
+.category-btn.active {
+    animation: buttonPulse 2s infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(57, 255, 20, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(57, 255, 20, 0.8), 0 0 40px rgba(57, 255, 20, 0.6); }
+}
+
+/* Анимация большой кнопки */
+.big-order-btn {
+    animation: bigButtonPulse 3s infinite;
+}
+
+@keyframes bigButtonPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 30px rgba(255, 7, 58, 0.5);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 0 50px rgba(255, 7, 58, 0.8),
+                  0 0 70px rgba(138, 43, 226, 0.6);
+    }
+}
+
+/* Анимация цен */
+.price {
+    animation: priceFlash 3s infinite;
+}
+
+@keyframes priceFlash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Анимация предупреждений */
+.warning {
+    animation: warningBlink 2s infinite;
+}
+
+@keyframes warningBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Анимация градиентных обводок */
+@keyframes borderRotate {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.menu-item:hover::before {
+    animation: borderRotate 3s linear infinite;
+}
+
+/* Анимация появления меню */
+.menu-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: menuItemAppear 0.5s ease-out forwards;
+}
+
+@keyframes menuItemAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Анимация деталей (аккордеон) */
+.details-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.details-item[open] .details-content {
+    max-height: 500px;
+    padding: 15px;
+}
+
+/* Задержки для анимаций появления */
+.menu-item:nth-child(1) { animation-delay: 0.1s; }
+.menu-item:nth-child(2) { animation-delay: 0.2s; }
+.menu-item:nth-child(3) { animation-delay: 0.3s; }
+.menu-item:nth-child(4) { animation-delay: 0.4s; }
+.menu-item:nth-child(5) { animation-delay: 0.5s; }
+.menu-item:nth-child(6) { animation-delay: 0.6s; }
